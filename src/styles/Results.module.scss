@@ -1,0 +1,162 @@
+.headerContainer {
+  height: 5rem;
+
+  background-color: var(--shape);
+
+  border-bottom: 0.25px solid var(--border);
+}
+
+.headerContent {
+  max-width: 1120px;
+  height: 5rem;
+
+  margin: 0 auto;
+
+  padding: 0 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    align-items: center;
+
+    h1 {
+      height: 5.5rem;
+
+      font-size: 1.5rem;
+      font-weight: 400;
+
+      color: var(--title);
+
+      line-height: 5rem;
+
+      span {
+        font-size: 2rem;
+
+        color: var(--blue);
+      }
+    }
+
+    a {
+      height: 5rem;
+
+      font-size: 1rem;
+
+      line-height: 5rem;
+
+      color: var(--text);
+
+      margin-left: 5rem;
+
+      padding: 0 0.25rem;
+
+      display: inline-block;
+      position: relative;
+
+      transition: color 0.2s;
+
+      &:hover {
+        color: var(--white);
+      }
+
+      &.activity::after {
+        content: "";
+
+        width: 100%;
+        height: 3px;
+
+        background-color: var(--blue-button);
+
+        border-radius: 3px 3px 0 0;
+
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+      }
+    }
+  }
+
+  button {
+    width: 10rem;
+
+    background-color: var(--shape);
+
+    font-size: 1rem;
+    font-weight: 400;
+
+    color: var(--title);
+
+    padding: 0.25rem 0.5rem;
+
+    border: 1px solid var(--blue-button);
+    border-radius: 0.25rem;
+
+    text-transform: none;
+
+    transition: background-color 2s;
+
+    &:hover {
+      background-color: var(--blue-button);
+    }
+  }
+}
+
+.mainContainer {
+  max-width: 1120px;
+
+  margin: 0 auto;
+
+  padding: 2rem 2rem;
+
+  .divFlex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-top: 2rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  span {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--title);
+
+    text-align: start;
+
+    padding: 0.5rem 0.5rem; 
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--title);
+
+    text-align: start;
+
+    padding: 0.5rem 0.5rem;    
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text);
+
+    text-align: start;
+
+    padding: 1rem 0.5rem;
+
+    &.chosen {
+      color: var(--yellow);
+    }
+
+    &.right {
+      color: var(--green);
+    }
+  }
+}
