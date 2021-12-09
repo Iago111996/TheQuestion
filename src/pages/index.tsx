@@ -29,33 +29,18 @@ export default function Home() {
               TheQuestion
             </h1>
 
-            <a href="#" className={styles.activity}>Report</a>
+            <a href="#" className={styles.activity}>
+              Report
+            </a>
           </div>
 
           <Link href="/chooseQuantity" color="inherit" underline="none">
             <Button type="button">New game</Button>
           </Link>
         </div>
+
         <main className={styles.mainContainer}>
-          {questions &&
-            questions.map((question, index) => {
-              const newAnswerse = [
-                questions[index].correct_answer,
-                ...questions[index].incorrect_answers,
-              ];
-              return (
-                <React.Fragment key={index}>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: question.question,
-                    }}
-                  />
-                  {newAnswerse.map((answer, index) => {
-                    return <h2 key={index}>{answer}</h2>;
-                  })}
-                </React.Fragment>
-              );
-            })}
+          
         </main>
       </header>
     </>

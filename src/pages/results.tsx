@@ -13,14 +13,10 @@ import Link from "@mui/material/Link";
 export default function Home() {
   const { questions, answers } = useQuestions();
 
-  useEffect(() => {
-    console.log(answers);
-  }, []);
-
   return (
     <>
       <Head>
-        <title>Report | TheQuestion</title>
+        <title>Results | TheQuestion</title>
       </Head>
 
       <header className={styles.headerContainer}>

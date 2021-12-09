@@ -1,4 +1,4 @@
-import styles from "../styles/ChooseQuantity.module.scss";
+import styles from "../styles/Choose.module.scss";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -18,27 +18,19 @@ export default function ChooseQuantity() {
   return (
     <main className={styles.contentContainer}>
       <Head>
-        <title>New game | TheQuestion</title>
+        <title>Choose | TheQuestion</title>
       </Head>
 
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
           <div className={styles.divBorder}>
-            <h2>Choose the number of questions you want to answer.</h2>
+            <h2>Are you sure you want to continue?</h2>
           </div>
-          <Input
-            type="number"
-            margin="dense"
-            placeholder="Number here"
-            autoFocus={true}
-            // value={numberQuestions}
-            onChange={(e) => setNumberQuestions(+e.target.value)}
-          />
         </CardContent>
 
         <CardActions>
           <div className={styles.divFlex}>
-            <Link href={numberQuestions > 0 ? "/choose" : "#"}>
+            <Link href={numberQuestions > 0 ? "/questionsShow" : "#"}>
               <Button
                 className={styles.startButton}
                 type="button"
@@ -48,9 +40,9 @@ export default function ChooseQuantity() {
               </Button>
             </Link>
 
-            <Link href="/">
+            <Link href="/chooseQuantity">
               <Button className={styles.endButton} type="button">
-                <a>GoBack</a>
+                <a>Cancel</a>
               </Button>
             </Link>
           </div>

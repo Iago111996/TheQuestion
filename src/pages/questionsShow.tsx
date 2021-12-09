@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import Head from "next/head";
 import Link from "next/link";
 
 import styles from "../styles/QuestionsShow.module.scss";
@@ -12,15 +12,18 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 
 export default function QuestionsShow() {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [responseQuestion, setResponseQuestion] = useState<number[]>([]);
   const [newAnswers, setNewAnswers] = useState<string[]>([]);
-
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(false);
 
   const { questions, answers, setAnswers } = useQuestions();
 
-  function handleAnswer(answer: string) {
+  const right = responseQuestion.filter((index) => index === 0);
+
+  function handleAnswer(answer: string, index: number) {
     setAnswers([...answers, answer]);
+    setResponseQuestion((prevState) => [...prevState, index]);
 
     const nextQuestion = currentQuestion + 1;
 
@@ -42,13 +45,16 @@ export default function QuestionsShow() {
 
   return (
     <main className={styles.contentContainer}>
+      <Head>
+        <title>Questions | TheQuestion</title>
+      </Head>
+
       {!score ? (
         questions.length > 0 ? (
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
               <h2>
-                Questão {currentQuestion + 1}/{questions.length}//
-                {answers}
+                Questão {currentQuestion + 1}/{questions.length}
               </h2>
 
               <p
@@ -66,7 +72,7 @@ export default function QuestionsShow() {
                       key={index}
                       type="button"
                       className={styles.startButton}
-                      onClick={() => handleAnswer(answer)}
+                      onClick={() => handleAnswer(answer, index)}
                     >
                       {answer}
                     </Button>
@@ -81,15 +87,17 @@ export default function QuestionsShow() {
       ) : (
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
-            <h2>you got 5 out of 5</h2>
+            <h2>
+              you got {right.length} out of {questions.length} questions
+            </h2>
           </CardContent>
 
           <CardActions>
             <div className={styles.divFlex}>
-              <Link href={'/results'}>
-              <Button type="button" className={styles.detailsButton}>
-              Click here for more details
-              </Button>
+              <Link href={"/results"}>
+                <Button type="button" className={styles.detailsButton}>
+                  Click here for more details
+                </Button>
               </Link>
             </div>
           </CardActions>
