@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -32,6 +33,22 @@ export default function QuestionsShow() {
     } else {
       setScore(true);
     }
+  }
+
+  function handleRegisterResponse(results: string) {
+    const newGame = {
+      id: uuidv4(),
+      date: new Date(),
+      report: results,
+    };
+
+    const dataKey = "@thequestion:report";
+    const data = localStorage.getItem(dataKey);
+    const currentData = data ? JSON.parse(data) : [];
+
+    const dataFormated = [...currentData, newGame];
+
+    localStorage.setItem(dataKey, JSON.stringify(dataFormated));
   }
 
   useEffect(() => {
@@ -95,7 +112,11 @@ export default function QuestionsShow() {
           <CardActions>
             <div className={styles.divFlex}>
               <Link href={"/results"}>
-                <Button type="button" className={styles.detailsButton}>
+                <Button
+                  type="button"
+                  className={styles.detailsButton}
+                  onClick={() => handleRegisterResponse(`you got ${right.length} out of ${questions.length} questions`)}
+                >
                   Click here for more details
                 </Button>
               </Link>
