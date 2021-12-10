@@ -30,7 +30,7 @@ export default function ChooseQuantity() {
 
         <CardActions>
           <div className={styles.divFlex}>
-            <Link href={numberQuestions > 0 ? "/questionsShow" : "#"}>
+            <Link href={numberQuestions > 0 ? "/questionsShow" : "#"} passHref={true}>
               <Button
                 className={styles.startButton}
                 type="button"
@@ -40,7 +40,7 @@ export default function ChooseQuantity() {
               </Button>
             </Link>
 
-            <Link href="/chooseQuantity">
+            <Link href="/chooseQuantity" passHref={true}>
               <Button className={styles.endButton} type="button">
                 <a>Cancel</a>
               </Button>

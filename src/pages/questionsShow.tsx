@@ -111,7 +111,7 @@ export default function QuestionsShow() {
 
           <CardActions>
             <div className={styles.divFlex}>
-              <Link href={"/results"}>
+              <Link href={"/results"} passHref={true}>
                 <Button
                   type="button"
                   className={styles.detailsButton}

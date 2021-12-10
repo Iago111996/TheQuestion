@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import Head from "next/head";
+import Link from "next/link";
 
 import styles from "../styles/Home.module.scss";
 
-import { useQuestions } from "../hooks/useQuestions";
-
 import Button from "@mui/material/Button";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import Link from "@mui/material/Link";
 
 interface Report {
   id: string;
@@ -23,7 +21,6 @@ export default function Home() {
     const dataKey = "@thequestion:report";
     const response = localStorage.getItem(dataKey);
     const data = response ? JSON.parse(response) : [];
-    console.log("to na fucao");
 
     setReport(data);
   }
@@ -48,14 +45,7 @@ export default function Home() {
 
   useEffect(() => {
     loadReports();
-    console.log(reports);
-    console.log("oi");
   }, []);
-
-  useEffect(() => {
-    console.log(reports);
-    console.log("oi");
-  }, [reports]);
 
   return (
     <>
@@ -78,10 +68,13 @@ export default function Home() {
             </a>
           </div>
 
-          <Link href="/chooseQuantity" color="inherit" underline="none">
-            <Button type="button">New game</Button>
+          <Link href="/chooseQuantity" passHref={true}>
+            <Button className={styles.buttonNew} type="button">
+              New game
+            </Button>
           </Link>
         </div>
+        </header>
 
         <main className={styles.mainContainer}>
           {reports ? (
@@ -100,7 +93,7 @@ export default function Home() {
                       <td>{moment(report.date).format("LLL")}</td>
                       <td>
                         <div>
-                          {report.report}{" "}
+                          {report.report}
                           <Button
                             type="button"
                             onClick={() => handleDelete(report.id)}
@@ -120,7 +113,7 @@ export default function Home() {
             </div>
           )}
         </main>
-      </header>
+     
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-
 import Head from "next/head";
+import Link from "next/link";
 
 import styles from "../styles/Results.module.scss";
 
@@ -8,7 +8,6 @@ import { useQuestions } from "../hooks/useQuestions";
 
 import Button from "@mui/material/Button";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import Link from "@mui/material/Link";
 
 export default function Home() {
   const { questions, answers } = useQuestions();
@@ -29,14 +28,19 @@ export default function Home() {
               TheQuestion
             </h1>
 
-            <a href="/">Report</a>
-            <a href="#" className={styles.activity}>
-              Results
-            </a>
+            <Link href="/" passHref={true}>
+              <a>Report</a>
+            </Link>
+
+            <Link href="#" passHref={true}>
+              <a className={styles.activity}>Results</a>
+            </Link>
           </div>
 
-          <Link href="/chooseQuantity" color="inherit" underline="none">
-            <Button type="button">New game</Button>
+          <Link href="/chooseQuantity" passHref={true}>
+            <Button type="button" className={styles.buttonNew}>
+              <a>New game</a>
+            </Button>
           </Link>
         </div>
         <main className={styles.mainContainer}>
@@ -50,7 +54,7 @@ export default function Home() {
               return (
                 <React.Fragment key={index}>
                   <div className={styles.divFlex}>
-                    <span>{index +1}</span>
+                    <span>{index + 1}</span>
                     <p
                       dangerouslySetInnerHTML={{
                         __html: question.question,
