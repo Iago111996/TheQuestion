@@ -28,11 +28,34 @@ export default function Home() {
     setReport(data);
   }
 
+  function handleDelete(id: string) {
+    setReport((prevState) => {
+      if (prevState.some((response) => response.id == id)) {
+        return prevState.filter((response) => response.id != id);
+      }
+    });
+
+    const dataKey = "@thequestion:report";
+    const data = localStorage.getItem(dataKey);
+    const currentData = data ? JSON.parse(data) : [];
+
+    const dataFormated = currentData.filter(
+      (response: Report) => response.id != id
+    );
+
+    localStorage.setItem(dataKey, JSON.stringify(dataFormated));
+  }
+
   useEffect(() => {
     loadReports();
     console.log(reports);
     console.log("oi");
   }, []);
+
+  useEffect(() => {
+    console.log(reports);
+    console.log("oi");
+  }, [reports]);
 
   return (
     <>
@@ -75,7 +98,17 @@ export default function Home() {
                   return (
                     <tr key={report.id}>
                       <td>{moment(report.date).format("LLL")}</td>
-                      <td>{report.report}</td>
+                      <td>
+                        <div>
+                          {report.report}{" "}
+                          <Button
+                            type="button"
+                            onClick={() => handleDelete(report.id)}
+                          >
+                            Delete
+                          </Button>
+                        </div>
+                      </td>
                     </tr>
                   );
                 })}
