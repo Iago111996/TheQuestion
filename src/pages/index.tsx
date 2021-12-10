@@ -77,7 +77,7 @@ export default function Home() {
         </header>
 
         <main className={styles.mainContainer}>
-          {reports ? (
+          {reports.length > 0 ? (
             <table>
               <thead>
                 <tr>
@@ -109,7 +109,8 @@ export default function Home() {
             </table>
           ) : (
             <div>
-              <h2>you don't have any results...</h2>
+              <h2>You don't have any results...</h2>
+              <h2>Star a new game!</h2>
             </div>
           )}
         </main>
