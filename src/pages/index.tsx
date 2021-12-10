@@ -74,47 +74,46 @@ export default function Home() {
             </Button>
           </Link>
         </div>
-        </header>
+      </header>
 
-        <main className={styles.mainContainer}>
-          {reports.length > 0 ? (
-            <table>
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Results</th>
-                </tr>
-              </thead>
+      <main className={styles.mainContainer}>
+        {reports.length > 0 ? (
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Results</th>
+              </tr>
+            </thead>
 
-              <tbody>
-                {reports?.map((report) => {
-                  return (
-                    <tr key={report.id}>
-                      <td>{moment(report.date).format("LLL")}</td>
-                      <td>
-                        <div>
-                          {report.report}
-                          <Button
-                            type="button"
-                            onClick={() => handleDelete(report.id)}
-                          >
-                            Delete
-                          </Button>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          ) : (
-            <div>
-              <h2>You don't have any results...</h2>
-              <h2>Star a new game!</h2>
-            </div>
-          )}
-        </main>
-     
+            <tbody>
+              {reports?.map((report) => {
+                return (
+                  <tr key={report.id}>
+                    <td>{moment(report.date).format("LLL")}</td>
+                    <td>
+                      <section>
+                        {report.report}
+                        <Button
+                          type="button"
+                          onClick={() => handleDelete(report.id)}
+                        >
+                          Delete
+                        </Button>
+                      </section>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : (
+          <div>
+            <h2>You don't have any results...</h2>
+            <h2>Star a new game!</h2>
+          </div>
+        )}
+      </main>
     </>
   );
 }

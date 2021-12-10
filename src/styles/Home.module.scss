@@ -120,10 +120,10 @@
     flex-direction: column;
     align-items: center;
 
-    h2{
+    h2 {
       font-size: 1.3rem;
       font-weight: 400;
-  
+
       color: var(--title);
 
       & + h2 {
@@ -138,7 +138,7 @@
     margin: 0 auto;
     padding: 2rem 0;
 
-    th{
+    th {
       background-color: var(--background-alt);
 
       font-size: 1.1rem;
@@ -153,7 +153,8 @@
       border-radius: 3px;
     }
 
-    td{
+    td {
+      max-height: 1vh;
       background-color: var(--shape);
 
       font-size: 1rem;
@@ -165,12 +166,8 @@
       border: 0;
       border-radius: 3px;
 
-      div {
-        width: 100%;
-        height: 1.5rem;
-
+      section {
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
         align-items: center;
 
@@ -190,7 +187,5 @@
         }
       }
     }
-
-    
   }
 }
