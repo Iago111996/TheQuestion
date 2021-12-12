@@ -37,6 +37,10 @@
 
         color: var(--blue);
       }
+
+      @media (min-width: 375px) {
+        font-size: 1.3rem;
+      }
     }
 
     a {
@@ -75,6 +79,10 @@
         bottom: 2px;
         left: 0;
       }
+
+      @media (min-width: 375px) {
+        margin-left: 1rem;
+      }
     }
   }
 
@@ -100,6 +108,10 @@
     &:hover {
       background-color: var(--blue-button);
     }
+  }
+
+  @media (min-width: 375px) {
+    padding: 0 1rem;
   }
 }
 
@@ -151,10 +163,13 @@
 
       border: 0;
       border-radius: 3px;
+
+      @media (min-width: 375px) {
+        padding: 0.5rem 1rem;
+      }
     }
 
     td {
-      max-height: 1vh;
       background-color: var(--shape);
 
       font-size: 1rem;
@@ -186,6 +201,16 @@
           }
         }
       }
+
+      @media (min-width: 375px) {
+        font-size: 1rem;
+        font-weight: 200;
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    @media (min-width: 375px) {
+      width: 100%;
     }
   }
 }

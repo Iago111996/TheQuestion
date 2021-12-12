@@ -71,7 +71,7 @@ export default function QuestionsShow() {
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
               <h2>
-                Questão {currentQuestion + 1}/{questions.length}
+                Questions {currentQuestion + 1}/{questions.length}
               </h2>
 
               <p

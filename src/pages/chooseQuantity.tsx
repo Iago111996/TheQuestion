@@ -44,7 +44,7 @@ export default function ChooseQuantity() {
                 type="button"
                 onClick={numberQuestions !== 0 ? loadQuestions : null}
               >
-                <a>Star</a>
+                <a>Start</a>
               </Button>
             </Link>
 
